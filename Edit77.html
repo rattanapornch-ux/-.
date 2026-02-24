@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="th">
+ <head>
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>อุทยานสวรรค์ หนองสมบูรณ์ นครสวรรค์</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;family=Sarabun:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    * {
+      font-family: 'Prompt', 'Sarabun', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0d5c46 0%, #1a8563 50%, #2ecc71 100%);
+    }
+    .card-gradient {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,255,245,0.9) 100%);
+    }
+    .nature-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(26, 133, 99, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(13, 92, 70, 0.05) 0%, transparent 30%);
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-up {
+      animation: slideUp 0.5s ease-out;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-bubble {
+      animation: bubbleIn 0.3s ease-out;
+    }
+    @keyframes bubbleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2ecc71;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #0d5c46, #2ecc71);
+      border-radius: 2px;
+    }
+    .scroll-smooth {
+      scroll-behavior: smooth;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 nature-pattern overflow-auto"><!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg">
+   <div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="flex items-center justify-between"><a href="index.html" class="nav-link flex items-center gap-2">
+      <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><span class="text-white text-xl">🌳</span>
+      </div><span id="nav-title" class="text-xl font-bold text-emerald-800">อุทยานสวรรค์</span> </a>
+     <div class="hidden md:flex items-center gap-6"><a href="Edit22.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">ประวัติ</a> <a href="Edit33.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">จุดเช็คอิน</a> <a href="Edit44.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">กิจกรรม</a> <a href="Edit55.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">สุขภาพ</a> <a href="Edit66.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">เส้นทาง</a> <a href="Edit77.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">ติดต่อ</a>
+     </div><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-emerald-100 transition-colors">
+      <svg class="w-6 h-6 text-emerald-800" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+    </div><!-- Mobile Menu -->
+	
+   <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-emerald-100 pt-4">
+     <div class="flex flex-col gap-3"><a href="#history" class="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2">🏛️ ประวัติ</a> <a href="#checkin" class="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2">📸 จุดเช็คอิน</a> <a href="#activities" class="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2">🎯 กิจกรรม</a> <a href="#wellness" class="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2">🧘 สุขภาพ</a> <a href="#directions" class="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2">🗺️ เส้นทาง</a> <a href="#contact" class="text-gray-700 hover:text-emerald-600 transition-colors font-medium py-2">📞 ติดต่อ</a>
+     </div>
+    </div>
+   </div>
+  </nav><!-- Hero Section -->
+ <section id="contact" class="py-20 px-4 bg-gradient-to-b from-transparent via-emerald-50/50 to-transparent">
+   <div class="max-w-6xl mx-auto">
+    <h2 class="section-title text-3xl md:text-4xl font-bold text-emerald-900 text-center mb-16">📞 ติดต่อเรา</h2>
+    <div class="grid md:grid-cols-3 gap-8"><!-- Contact Info -->
+     <div class="bg-white/90 backdrop-blur rounded-3xl p-8 shadow-xl hover:scale-105 transition-all">
+      <h3 class="font-bold text-xl text-emerald-800 mb-6">📋 ข้อมูลติดต่อ</h3>
+      <div class="space-y-4">
+       <div class="flex items-center gap-3"><span class="text-2xl">📞</span>
+        <div>
+         <p class="font-semibold text-sm text-gray-800">โทรศัพท์</p>
+         <p id="contact-phone-display" class="text-gray-500 text-sm">095-5961607</p>
+        </div><br>
+       </div>
+       </div>
+	   <div class="p-3">
+       <div class="flex items-center gap-3"><span class="text-2xl">📍</span>
+        <div>
+         <p class="font-semibold text-sm text-gray-800">ที่อยู่</p>
+         <p id="contact-phone-display" class="text-gray-500 text-sm">ตำบลปากน้ำโพ อำเภอเมืองนครสวรรค์ นครสวรรค์ 60000</p>
+        </div><br>
+		</div>
+       </div>
+       <div class="flex items-center gap-3"><span class="text-2xl">🕐</span>
+        <div>
+         <p class="font-semibold text-sm text-gray-800">เวลาทำการ</p>
+         <p id="contact-phone-display" class="text-gray-500 text-sm">เปิดทุกวัน 04:30-22:00 น.</p>
+        </div>
+       </div>
+	  </div>
+     <div class="bg-white/90 backdrop-blur rounded-3xl p-8 shadow-xl hover:scale-105 transition-all">
+      <h3 class="font-bold text-xl text-emerald-800 mb-6">💬 ส่งข้อความด่วน</h3>
+      <form id="contact-form" class="space-y-4">
+       <div><label for="name-input" class="block text-sm font-medium text-gray-700 mb-1">ชื่อ</label> <input type="text" id="name-input" placeholder="ชื่อของคุณ" class="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all">
+       </div>
+       <div><label for="message-input" class="block text-sm font-medium text-gray-700 mb-1">ข้อความ</label> <textarea id="message-input" rows="3" placeholder="ข้อความของคุณ..." class="w-full px-4 py-3 rounded-xl border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all resize-none"></textarea>
+       </div><button type="submit" class="w-full py-3 gradient-bg text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-xl hover:scale-105 transition-all"> 📤 ส่งข้อความ </button>
+      </form>
+      <div id="form-success" class="hidden mt-4 p-4 bg-emerald-100 rounded-xl text-emerald-800 text-center">
+       ✅ ส่งข้อความสำเร็จ!
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+   <footer class="bg-emerald-900 text-white py-12 px-4">
+   <div class="max-w-6xl mx-auto text-center">
+    <div class="flex items-center justify-center gap-2 mb-4"><span class="text-3xl">🌿</span> <span id="footer-title" class="text-2xl font-bold">อุทยานสวรรค์</span>
+    </div>
+    <p class="text-emerald-300 mb-4">หนองสมบูรณ์ จังหวัดนครสวรรค์</p>
+    <p class="text-emerald-400 text-sm">© 2026 อุทยานสวรรค์ All Rights Reserved.</p>
+   </div>
+  </footer><!-- Chatbot -->
+ <div id="chatbot-container" class="fixed bottom-6 right-6 z-50"><!-- Chat Button --> <button id="chat-toggle" class="w-16 h-16 gradient-bg rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"> <span id="chat-icon" class="text-3xl">💬</span> </button> <!-- Chat Window -->
+   <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl overflow-hidden"><!-- Chat Header -->
+    <div class="gradient-bg p-4 text-white">
+     <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center"><span class="text-xl">🤖</span>
+      </div>
+      <div>
+       <h4 class="font-bold">สวรรค์ Bot</h4>
+       <p class="text-emerald-100 text-xs">ยินดีให้บริการค่ะ</p>
+      </div>
+     </div>
+    </div><!-- Chat Messages -->
+    <div id="chat-messages" class="h-72 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-emerald-50 to-white"><!-- Welcome Message -->
+     <div class="chat-bubble flex gap-2">
+      <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-sm">🤖</span>
+      </div>
+      <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-md max-w-[80%]">
+       <p class="text-sm text-gray-700">สวัสดีค่ะ! 🌿 ยินดีต้อนรับสู่อุทยานสวรรค์ มีอะไรให้ช่วยไหมคะ?</p>
+      </div>
+     </div>
+    </div><!-- Quick Replies -->
+    <div id="quick-replies" class="p-3 border-t border-emerald-100 bg-white">
+     <div class="flex flex-wrap gap-2"><button onclick="sendQuickReply('เวลาเปิด-ปิด')" class="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs hover:bg-emerald-200 transition-colors">🕐 เวลาเปิด-ปิด</button> <button onclick="sendQuickReply('ค่าเข้าชม')" class="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs hover:bg-emerald-200 transition-colors">💰 ค่าเข้าชม</button> <button onclick="sendQuickReply('กิจกรรมแนะนำ')" class="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs hover:bg-emerald-200 transition-colors">🎯 กิจกรรม</button> <button onclick="sendQuickReply('การเดินทาง')" class="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs hover:bg-emerald-200 transition-colors">🗺️ การเดินทาง</button>
+     </div>
+    </div><!-- Chat Input -->
+    <div class="p-3 border-t border-emerald-100 bg-white">
+     <form id="chat-form" class="flex gap-2"><label for="chat-input" class="sr-only">พิมพ์ข้อความ</label> <input type="text" id="chat-input" placeholder="พิมพ์ข้อความ..." class="flex-1 px-4 py-2 rounded-full border border-emerald-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none text-sm"> <button type="submit" class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition-opacity"> <span>➤</span> </button>
+     </form>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Default Configuration
+    const defaultConfig = {
+      site_title: 'อุทยานสวรรค์',
+      hero_tagline: 'สวรรค์บนดิน ณ นครสวรรค์',
+      contact_phone: '056-XXX-XXX',
+      primary_color: '#0d5c46',
+      secondary_color: '#2ecc71',
+      background_color: '#f0fdf4',
+      text_color: '#1f2937',
+      accent_color: '#ffffff',
+      font_family: 'Prompt',
+      font_size: 16
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update site title
+          const siteTitle = config.site_title || defaultConfig.site_title;
+          document.getElementById('nav-title').textContent = siteTitle;
+          document.getElementById('hero-title').textContent = siteTitle;
+          document.getElementById('footer-title').textContent = siteTitle;
+
+          // Update tagline
+          const tagline = config.hero_tagline || defaultConfig.hero_tagline;
+          document.getElementById('hero-tagline').textContent = `✨ ${tagline} ✨`;
+
+          // Update contact phone
+          const phone = config.contact_phone || defaultConfig.contact_phone;
+          document.getElementById('contact-phone-display').textContent = phone;
+
+          // Update colors
+          const primaryColor = config.primary_color || defaultConfig.primary_color;
+          const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+          const bgColor = config.background_color || defaultConfig.background_color;
+          const textColor = config.text_color || defaultConfig.text_color;
+          const accentColor = config.accent_color || defaultConfig.accent_color;
+
+          document.documentElement.style.setProperty('--primary-color', primaryColor);
+          document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+
+          // Update gradient backgrounds
+          const gradientElements = document.querySelectorAll('.gradient-bg');
+          gradientElements.forEach(el => {
+            el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${secondaryColor} 100%)`;
+          });
+
+          // Update body background
+          document.body.style.background = `linear-gradient(to bottom right, ${bgColor}, ${bgColor})`;
+
+          // Update text colors
+          document.querySelectorAll('.text-emerald-900, .text-emerald-800').forEach(el => {
+            el.style.color = textColor;
+          });
+
+          // Update fonts
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          const fontSize = config.font_size || defaultConfig.font_size;
+          const baseFontStack = "'Sarabun', sans-serif";
+
+          document.body.style.fontFamily = `'${fontFamily}', ${baseFontStack}`;
+
+          // Scale fonts proportionally
+          document.querySelectorAll('h1').forEach(el => {
+            el.style.fontSize = `${fontSize * 2.5}px`;
+          });
+          document.querySelectorAll('h2').forEach(el => {
+            el.style.fontSize = `${fontSize * 2}px`;
+          });
+          document.querySelectorAll('h3').forEach(el => {
+            el.style.fontSize = `${fontSize * 1.25}px`;
+          });
+          document.querySelectorAll('p, span, a, button').forEach(el => {
+            if (!el.classList.contains('text-xs') && !el.classList.contains('text-sm')) {
+              el.style.fontSize = `${fontSize}px`;
+            }
+          });
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['site_title', config.site_title || defaultConfig.site_title],
+          ['hero_tagline', config.hero_tagline || defaultConfig.hero_tagline],
+          ['contact_phone', config.contact_phone || defaultConfig.contact_phone]
+        ])
+      });
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Contact Form
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formSuccess.classList.remove('hidden');
+      contactForm.reset();
+      setTimeout(() => {
+        formSuccess.classList.add('hidden');
+      }, 3000);
+    });
+
+    // Chatbot
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const chatIcon = document.getElementById('chat-icon');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    let isChatOpen = false;
+
+    chatToggle.addEventListener('click', () => {
+      isChatOpen = !isChatOpen;
+      chatWindow.classList.toggle('hidden');
+      chatIcon.textContent = isChatOpen ? '✕' : '💬';
+    });
+
+    // Chat responses database
+    const chatResponses = {
+      'เวลาเปิด-ปิด': 'อุทยานสวรรค์เปิดให้บริการทุกวัน ⏰ ตั้งแต่ 04:30-22:00 น. ค่ะ แนะนำมาช่วงเช้าตรู่หรือช่วงเย็นจะเห็นวิวสวยมากค่ะ! 🌅',
+      'ค่าเข้าชม': 'ยินดีค่ะ! 🎉 อุทยานสวรรค์ไม่มีค่าเข้าชมค่ะ ฟรีตลอดทั้งปี! มีแค่ค่าบริการเสริม เช่น:\n• เช่าจักรยาน 20-30 บาท/ชม.\n• เช่าเรือคายัค 100 บาท/ชม.',
+      'กิจกรรมแนะนำ': 'กิจกรรมยอดนิยมที่อุทยานสวรรค์ 🎯\n\n🚴 ปั่นจักรยานรอบหนอง\n🚣 พายเรือคายัค\n🐟 ให้อาหารปลา\n🧘 โยคะริมน้ำ (เสาร์-อาทิตย์)\n🌅 ชมพระอาทิตย์ตก\n\nอยากทำกิจกรรมไหนเป็นพิเศษคะ?',
+      'การเดินทาง': '📍 วิธีมาอุทยานสวรรค์\n\n🚗 รถส่วนตัว: จากตัวเมืองนครสวรรค์ ใช้ถนนสวรรค์วิถี ไปทางทิศตะวันออกเฉียงใต้ ประมาณ 5 กม.\n\n🚌 รถสาธารณะ: รถสองแถวสายหนองสมบูรณ์ ขึ้นที่สถานีขนส่ง\n\n🚕 แท็กซี่/Grab: ประมาณ 80-120 บาท\n\n พิกัด GPS:อุทยานสวรรค์',
+      'default': 'ขอบคุณที่สอบถามค่ะ 😊 หากต้องการข้อมูลเพิ่มเติม สามารถ:\n• โทร 095-5961607\n•หรือถามคำถามอื่นได้เลยค่ะ!'
+    };
+
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'chat-bubble flex gap-2' + (isUser ? ' flex-row-reverse' : '');
+      
+      const avatar = document.createElement('div');
+      avatar.className = `w-8 h-8 ${isUser ? 'bg-blue-500' : 'bg-emerald-500'} rounded-full flex items-center justify-center flex-shrink-0`;
+      avatar.innerHTML = `<span class="text-sm">${isUser ? '👤' : '🤖'}</span>`;
+
+      const bubble = document.createElement('div');
+      bubble.className = `${isUser ? 'bg-blue-500 text-white rounded-tr-none' : 'bg-white rounded-tl-none'} p-3 rounded-2xl shadow-md max-w-[80%]`;
+      bubble.innerHTML = `<p class="text-sm ${isUser ? '' : 'text-gray-700'}" style="white-space: pre-line;">${text}</p>`;
+
+      messageDiv.appendChild(avatar);
+      messageDiv.appendChild(bubble);
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getBotResponse(userMessage) {
+      const msg = userMessage.toLowerCase();
+      
+      if (msg.includes('เวลา') || msg.includes('เปิด') || msg.includes('ปิด') || msg.includes('กี่โมง')) {
+        return chatResponses['เวลาเปิด-ปิด'];
+      } else if (msg.includes('ค่า') || msg.includes('ราคา') || msg.includes('เท่าไหร่') || msg.includes('ฟรี') || msg.includes('เงิน')) {
+        return chatResponses['ค่าเข้าชม'];
+      } else if (msg.includes('กิจกรรม') || msg.includes('ทำอะไร') || msg.includes('เล่น') || msg.includes('แนะนำ')) {
+        return chatResponses['กิจกรรมแนะนำ'];
+      } else if (msg.includes('ทาง') || msg.includes('ไป') || msg.includes('อยู่ไหน') || msg.includes('พิกัด') || msg.includes('gps') || msg.includes('รถ')) {
+        return chatResponses['การเดินทาง'];
+      } else if (msg.includes('สวัสดี') || msg.includes('หวัดดี') || msg.includes('hello') || msg.includes('hi')) {
+        return 'สวัสดีค่ะ! 🌿 ยินดีต้อนรับสู่อุทยานสวรรค์ มีอะไรให้ช่วยไหมคะ?';
+      } else if (msg.includes('ขอบคุณ') || msg.includes('thanks')) {
+        return 'ยินดีค่ะ! 😊 หากมีคำถามเพิ่มเติม ถามได้เลยนะคะ หวังว่าจะได้พบกันที่อุทยานสวรรค์นะคะ! 🌿';
+      } else {
+        return chatResponses['default'];
+      }
+    }
+
+    function sendQuickReply(topic) {
+      addMessage(topic, true);
+      setTimeout(() => {
+        addMessage(chatResponses[topic]);
+      }, 500);
+    }
+
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      addMessage(message, true);
+      chatInput.value = '';
+
+      setTimeout(() => {
+        const response = getBotResponse(message);
+        addMessage(response);
+      }, 800);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bd31d9102ba893b',t:'MTc2ODI4ODY2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
