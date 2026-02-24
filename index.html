@@ -93,21 +93,14 @@
  <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo">🌳 อุทยานสวรรค์</a>
-            <div class="menu">
-                <a href="Edit22.htm">ประวัติ</a>
-                <a href="Edit33.html">จุดเช็คอิน</a>
-                <a href="Edit44.html">กิจกรรม</a>
-                <a href="Edit55.html">สุขภาพ</a>
-                <a href="Edit66.html">เส้นทาง</a>
-				<a href="Edit77.html">ติดต่อ</a>
-            </div>
-        </nav>
-    </header>
-	 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-emerald-100 transition-colors">
+ <body class="h-full bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 nature-pattern overflow-auto"><!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg">
+   <div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="flex items-center justify-between"><a href="index.html" class="nav-link flex items-center gap-2">
+      <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center"><span class="text-white text-xl">🌳</span>
+      </div><span id="nav-title" class="text-xl font-bold text-emerald-800">อุทยานสวรรค์</span> </a>
+     <div class="hidden md:flex items-center gap-6"><a href="Edit22.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">ประวัติ</a> <a href="Edit33.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">จุดเช็คอิน</a> <a href="Edit44.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">กิจกรรม</a> <a href="Edit55.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">สุขภาพ</a> <a href="Edit66.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">เส้นทาง</a> <a href="Edit77.html" class="nav-link text-gray-700 hover:text-emerald-600 transition-colors font-medium">ติดต่อ</a>
+     </div><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-emerald-100 transition-colors">
       <svg class="w-6 h-6 text-emerald-800" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg></button>
     </div><!-- Mobile Menu -->
@@ -148,6 +141,7 @@
  </section>
 
 </html>
+
 
 
 
